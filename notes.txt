@@ -1,0 +1,37 @@
+SELECT users.* FROM users
+INNER JOIN orders ON users.id = orders.user_id
+WHERE orders.user_id = 'value'
+to bring data from the tracks table whit the condition of the user email to show only his added content
+
+artist : can add update delete the songs and lyrics
+admin : can add and delete users accounts 
+user : can only see the other artists content 
+
+must done : 
+-L'admin peut trier et faire des recherches sur les titres ou les artistes.
+-L'admin peut insérer un ou plusieurs (minimum deux) titres à la fois. (Full dynamic form is optionally)
+
+
+---------------------------
+Prioritizing tasks and setting specific, measurable goals
+
+Eliminating distractions, such as turning off notifications on your phone
+
+Practicing mindfulness and meditation to improve mental clarity
+
+Staying physically active and getting regular exercise
+
+Getting enough sleep and maintaining a consistent sleep schedule
+
+Managing stress through techniques such as deep breathing and progressive muscle relaxation
+
+Breaking up work into shorter, focused sessions with regular breaks
+
+Using tools such as the Pomodoro Technique to structure work and breaks
+
+Keeping a consistent 
+
+Consuming a balanced diet and staying hydrated.
+
+
+
