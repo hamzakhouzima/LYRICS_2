@@ -32,20 +32,20 @@ function resetAtt(){
 
 
 }
-function showDataInModal(){
+function showDataInModal(e){
     
 
     
-    var modalartist = document.getElementsByClassName('.art1').textContent
-    var modalalbum =  document.getElementsByClassName('.art2').textContent
-    var modaltrack =  document.getElementsByClassName('.art3').textContent
-    var modallyrics =  document.getElementsByClassName('.art4').textContent
+    var modalartist =e.target.parentElement.parentElement.parentElement.querySelector('.art1').textContent
+    var modalalbum =  e.target.parentElement.parentElement.parentElement.querySelector('.art2').textContent
+    var modaltrack =  e.target.parentElement.parentElement.parentElement.querySelector('.art3').textContent
+    var modallyrics =  e.target.parentElement.parentElement.parentElement.querySelector('.art4').textContent
 
 
-    artist.innerText = modalartist
-    album.innerText= modalalbum
-    track.innerText= modaltrack
-    lyrics.innerText = modallyrics
+    artist.value = modalartist
+    album.value= modalalbum
+    track.value= modaltrack
+    lyrics.value = modallyrics
         
 
 }

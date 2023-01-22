@@ -56,13 +56,45 @@ session_start();
 
 
         public function statistics(){
-
-            $sql ="SELECT count(*) FROM tracks ";
+          
+            $sql ="SELECT COUNT(*) FROM (SELECT artist, COUNT(*) FROM tracks GROUP BY artist HAVING COUNT(*) >= 1) as temp ";
+            
             $stmt = $this->conn->prepare($sql);
             $stmt -> execute();
             $rows = $stmt->fetchAll();
-            return $rows;
+            foreach($rows as $row){ 
+                 echo $row['COUNT(*)'];
+                }
+          
 
+
+        }
+        public function statTracks(){
+            $sql ="SELECT COUNT(*) FROM tracks";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt -> execute();
+            $rows = $stmt->fetchAll();
+            foreach($rows as $row){
+
+                echo $row['COUNT(*)'];
+
+
+            }
+
+        }
+
+        public function statAlbums(){
+            
+            $sql ="SELECT COUNT(*) FROM (SELECT album, COUNT(*) FROM tracks GROUP BY album HAVING COUNT(*) >= 1) as temp ";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt -> execute();
+            $rows = $stmt->fetchAll();
+            foreach($rows as $row){ 
+                 echo $row['COUNT(*)'];
+                }
+          
 
 
         }

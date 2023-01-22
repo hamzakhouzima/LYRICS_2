@@ -179,8 +179,8 @@ include '../controller/content.php';
             </div>
           </div>
           <div class="col-md-3 mb-3">
-            <div class="card bg-warning text-dark h-100">
-              <div class="card-body py-5">Warning Card</div>
+            <div class="card bg-warning text-white h-100">
+              <div class="card-body py-5"><strong><?php $obj->statAlbums(); ?></strong> ALBUMS</div>
               <div class="card-footer d-flex">
                 View Details
                 <span class="ms-auto">
@@ -191,7 +191,7 @@ include '../controller/content.php';
           </div>
           <div class="col-md-3 mb-3">
             <div class="card bg-success text-white h-100">
-              <div class="card-body py-5">Success Card</div>
+              <div class="card-body py-5"><strong><?php $obj->statTracks();?></strong> TRACKS</div>
               <div class="card-footer d-flex">
                 View Details
                 <span class="ms-auto">
@@ -202,7 +202,7 @@ include '../controller/content.php';
           </div>
           <div class="col-md-3 mb-3">
             <div class="card bg-danger text-white h-100">
-              <div class="card-body py-5">Danger Card<i class="fa-regular fa-album-collection-circle-plus"></i></div>
+              <div class="card-body py-5"><strong><?php  $obj->statistics('heeamza');?></strong> ARTISTS</div>
               <i class="fa-regular fa-album-collection-circle-plus"></i>
               <div class="card-footer d-flex">
                 View Details
@@ -252,7 +252,7 @@ include '../controller/content.php';
                          <form method='post'>
                           <input class='id_hidden' type='text' name='id' value=".$row['id']." >
                           <button type='submit'  class='btn btn-danger' name='delete'  >Delete</button>
-                          <button type='button' id='update' onclick='resetForm();showDataInModal();setAtt();document.querySelector(".'".id_updated"'.").value=this.parentElement.querySelector(".'".id_hidden"'.").value;console.log(".'"tototot"'.");console.log(document.querySelector(".'".id_updated"'.").value)' class='btn btn-success'  name='update'>Update</button></th>
+                          <button type='button' id='update' onclick='resetForm();showDataInModal(event);setAtt();document.querySelector(".'".id_updated"'.").value=this.parentElement.querySelector(".'".id_hidden"'.").value;console.log(".'"tototot"'.");console.log(document.querySelector(".'".id_updated"'.").value)' class='btn btn-success'  name='update'>Update</button></th>
                           </form>
                         </tr>
                       </tbody>"
