@@ -92,7 +92,7 @@ include '../controller/content.php';
             <div class="card bg-primary text-white h-100">
               <div class="card-body py-5"><strong><?php $obj->statAdmin(); ?></strong> ADMINS</div>
               <div class="card-footer d-flex">
-                View Details
+                E-Lyrics
                 <span class="ms-auto">
                   <i class="bi bi-chevron-right"></i>
                 </span>
@@ -135,6 +135,7 @@ include '../controller/content.php';
           </div>
         </div>
 <!----------------------------------------------------------------------------------------->
+<button type="button" class="btn btn-success text-center"  onclick="resetAtt();resetForm();show();" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add New Track</button>
 
 
 <div class="card-body" style="display:block;">
@@ -266,7 +267,6 @@ let x = document.getElementById("my_form");
 
 
   <!----TOKEN--->
-  <button type="button" class="btn btn-primary"  onclick="resetAtt();resetForm();show();" data-bs-toggle="modal" data-bs-target="#exampleModal" >Launch demo modal</button>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -283,7 +283,7 @@ let x = document.getElementById("my_form");
 
 
       <form method='post' id="my_form" >
-
+<div class="group">
   <div class="form-group">
     <input type="hidden" class="id_updated" name="u_id"/>
     <label for="exampleInputEmail1" >Artist Name</label>
@@ -308,18 +308,49 @@ let x = document.getElementById("my_form");
   </div>
   <!-- <button type="submit" class="btn btn-primary" name="data_submit">Submit</button> -->
 
+</div>
+<!------------------>
 
+<div id="group2" style='display:none;'>
+  <div class="form-group">
+    <input type="hidden" class="id_updated" name="u_id"/>
+    <label for="exampleInputEmail1" >Artist Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" name='artist'  placeholder="Artist">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputPassword1">Album</label>
+    <input type="text" class="form-control"  id='exampleInputPassword1' name='album' placeholder="Album">
+  </div>
+
+  <div class="form-group ">
+  <label class="form-check-label" for="exampleCheck1">Track Name</label>
+  <input type="text" class="form-control"  id='exampleCheck1' name='track' placeholder="Track Name">
+    
+  </div>
+
+  <div class="form-group ">
+        <label class="form-check-label" for="exampleCheck1">lyrics</label>
+
+    <textarea type="text" class="form-control" id='exampleCheck2' name='lyrics' placeholder="Track Name"></textarea>
+  </div>
+  <!-- <button type="submit" class="btn btn-primary" name="data_submit">Submit</button> -->
+
+</div>
+
+<!------------------>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success"  id='add_new' onclick='dynamicForm();'>add</button>
+        <button type="button" class="btn btn-success" onclick='dynamicForm()' id='add_new'>add</button> 
         <button type="submit" class="btn btn-primary" id='save'>Save changes</button>
         <button type="submit" class="btn btn-danger " style='display:none' id='up'>Update</button>
       </div>
     </div>
   </div>
 </div>
+
 <!----------------------------------------------------------->
 </form>
 
@@ -336,6 +367,9 @@ let x = document.getElementById("my_form");
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
+
+
+
 
 
 </script>

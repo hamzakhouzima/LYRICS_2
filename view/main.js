@@ -70,15 +70,10 @@ for(let i=0 ; i < content.length;i++){
 function dynamicForm(){
 
 
-    let form = document.getElementById('my_form')
+    let form = document.getElementById('group2')
+    form.style.display = 'block'
 
-    var newInput = document.createElement("input");
-    newInput.type = "text";
-    newInput.id = "input2";
-    newInput.setAttribute("class" , "form-control");
-    newInput.name = "artist";
-    newInput.placeholder = "artist";
-    form.appendChild(newInput);
+  
 
    
 
