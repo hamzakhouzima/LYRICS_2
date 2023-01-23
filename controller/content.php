@@ -13,7 +13,7 @@ session_start();
         }
 
         public function getMusic(){
-            $sql ="SELECT * FROM tracks ";
+            $sql ="SELECT * FROM tracks ORDER BY artist ASC; ";
             $stmt = $this->conn->prepare($sql);
             $stmt -> execute();
             $rows = $stmt->fetchAll();
@@ -98,12 +98,37 @@ session_start();
 
 
         }
-        
-
+        public function statAdmin(){
+            
+            $sql ="SELECT COUNT(*) FROM user";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt -> execute();
+            $rows = $stmt->fetchAll();
+            foreach($rows as $row){ 
+                 echo $row['COUNT(*)'];
+                }
 
     }
 
 
+    public function search($key){
+       
+                    
+        $sql ="SELECT * FROM tracks WHERE artist LIKE :keyword OR album LIKE :keyword OR track_title LIKE :keyword";    
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->bindParam(':keyword', $key);
+        $stmt -> execute();
+        $rows = $stmt->fetchAll();
+     
+        return $rows ; 
+    }
+
+
+
+
+    }
 $obj = new SaveContent();
 
 $obj->getMusic();
@@ -141,6 +166,9 @@ $obj->getMusic();
 
 
     }
+
+
+    
 
 
 

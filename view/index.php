@@ -31,8 +31,8 @@ include '../controller/content.php';
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
         
-        <button   class="navbar-toggler" type="button"  data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="offcanvasExample">
-          <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
+        <!-- <button   class="navbar-toggler" type="button"  data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="offcanvasExample">
+          <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span> -->
         </button>
         <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#">e-lyrics</a>
         
@@ -45,11 +45,12 @@ include '../controller/content.php';
         <div class="collapse navbar-collapse" id="topNavBar">
           <form class="d-flex ms-auto my-3 my-lg-0" method='post'>
             <div class="input-group">
-              <input class="form-control" type="search" placeholder="Search" aria-label="Search"  id='live_search'  onkeyup="search()"  />
+              <input class="form-control" type="search" placeholder="Search" aria-label="Search"  id='live_search' name="keyword"    />
                 
-              <button class="btn btn-primary" type="submit">
-                <i class="bi bi-search"></i>
-              </button>
+              <button class="btn btn-primary" type="submit" name='search' onsubmit='changeStyle()'>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>          </button>
             </div>
           </form>
           <ul class="navbar-nav">
@@ -77,87 +78,7 @@ include '../controller/content.php';
     </nav>
     <!-- top navigation bar -->
     <!-- offcanvas -->
-    <div
-      class="offcanvas offcanvas-start sidebar-nav bg-dark"
-      tabindex="-1"
-      id="sidebar"
-    >
-      <div class="offcanvas-body p-0">
-        <nav class="navbar-dark">
-          <ul class="navbar-nav">
-            <li>
-              <div class="text-muted small fw-bold text-uppercase px-3">
-                CORE
-              </div>
-            </li>
-          
-            <li>
-              <a href="#" class="nav-link px-3 active">
-                <span class="me-2" id='add' data-target="#exampleModal"><i class="bx bx-plus"></i></span>
-                <span>Add</span>
-              </a>
-            </li>
-            <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
-            <li>
-              <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-                Interface
-              </div>
-            </li>
-            <li>
-              <a
-                class="nav-link px-3 sidebar-link"
-                data-bs-toggle="collapse"
-                href="#layouts"
-              >
-                <span class="me-2"><i class="bi bi-layout-split"></i></span>
-                <span>Layouts</span>
-                <span class="ms-auto">
-                  <span class="right-icon">
-                    <i class="bi bi-chevron-down"></i>
-                  </span>
-                </span>
-              </a>
-              <div class="collapse" id="layouts">
-                <ul class="navbar-nav ps-3">
-                  <li>
-                    <a href="#" class="nav-link px-3">
-                      <span class="me-2"
-                        ><i class="bi bi-speedometer2"></i
-                      ></span>
-                      <span>Dashboard</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <a href="#" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-book-fill"></i></span>
-                <span>Pages</span>
-              </a>
-            </li>
-            <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
-            <li>
-              <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-                Addons
-              </div>
-            </li>
-            <li>
-              <a href="#" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-graph-up"></i></span>
-                <span>Charts</span>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-table"></i></span>
-                <span>Tables</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+ 
     <!-- offcanvas -->
     <main class="mt-5 pt-3">
       <div class="container-fluid">
@@ -169,7 +90,7 @@ include '../controller/content.php';
         <div class="row">
           <div class="col-md-3 mb-3">
             <div class="card bg-primary text-white h-100">
-              <div class="card-body py-5">Primary Card</div>
+              <div class="card-body py-5"><strong><?php $obj->statAdmin(); ?></strong> ADMINS</div>
               <div class="card-footer d-flex">
                 View Details
                 <span class="ms-auto">
@@ -202,7 +123,7 @@ include '../controller/content.php';
           </div>
           <div class="col-md-3 mb-3">
             <div class="card bg-danger text-white h-100">
-              <div class="card-body py-5"><strong><?php  $obj->statistics('heeamza');?></strong> ARTISTS</div>
+              <div class="card-body py-5"><strong><?php  $obj->statistics();?></strong> ARTISTS</div>
               <i class="fa-regular fa-album-collection-circle-plus"></i>
               <div class="card-footer d-flex">
                 View Details
@@ -213,21 +134,14 @@ include '../controller/content.php';
             </div>
           </div>
         </div>
-       
-        <div class="row">
-          <div class="col-md-12 mb-3">
-            <div class="card">
-              <div class="card-header">
-                <span><i class="bi bi-table me-2"></i></span> Data Table
-              </div>
-              <div class="card-body">
+<!----------------------------------------------------------------------------------------->
+
+
+<div class="card-body" style="display:block;">
                 <div class="table-responsive">
-                  <table
-                    id="example"
-                    class="table table-striped data-table"
-                    style="width: 100%"
-                  >
-                   
+              
+                <table  id="example" class="table table-striped data-table" style="width: 100%;">
+             
                       <tr>
                         <th>Artist Name</th>
                         <th>Album</th>
@@ -242,24 +156,90 @@ include '../controller/content.php';
                     $rows=$obj->getMusic();
                     foreach($rows as $row){
                      echo  "
-                      <tbody>
+                     <div id='main_content'>
+                      <tbody id='current_content'  >
                         <tr>
-                          <th class='art1'>".$row['artist']."</th>
-                          <th class='art2'>".$row['album']."</th>
-                          <th class='art3'>".$row['track_title']."</th>
-                          <th class='art4'>".$row['lyrics']."</th>
+                          <th class='art1' id='q' >".$row['artist']."</th>
+                          <th class='art2' id='q'>".$row['album']."</th>
+                          <th class='art3' id='q'>".$row['track_title']."</th>
+                          <th class='art4' id='q'>".$row['lyrics']."</th>
                           <th>
                          <form method='post'>
-                          <input class='id_hidden' type='text' name='id' value=".$row['id']." >
+                          <input class='id_hidden' type='hidden' name='id' value=".$row['id']." >
                           <button type='submit'  class='btn btn-danger' name='delete'  >Delete</button>
-                          <button type='button' id='update' onclick='resetForm();showDataInModal(event);setAtt();document.querySelector(".'".id_updated"'.").value=this.parentElement.querySelector(".'".id_hidden"'.").value;console.log(".'"tototot"'.");console.log(document.querySelector(".'".id_updated"'.").value)' class='btn btn-success'  name='update'>Update</button></th>
+                          <button type='button' id='update' onclick='hide();resetForm();showDataInModal(event);setAtt();document.querySelector(".'".id_updated"'.").value=this.parentElement.querySelector(".'".id_hidden"'.").value;console.log(".'"tototot"'.");console.log(document.querySelector(".'".id_updated"'.").value)' class='btn btn-success'  name='update'>Update</button></th>
                           </form>
                         </tr>
-                      </tbody>"
+                      </tbody></div>"
                       ;
                       }
               
                     ?>
+                    
+                    
+
+                    
+               
+                   
+                  </table>
+                </div>
+              </div>
+<!----------------------------------------------------------------------------------------->
+
+
+
+
+       
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <div class="card" id='card' >
+              <div class="card-header">
+                <span><i class="bi bi-table me-2"></i></span> Search Table
+              </div>
+              <div class="card-body" id='card-body' >
+                <div class="table-responsive">
+              
+                <table  id="example" class="table table-striped data-table" style="width: 100%;">
+             
+                      <tr>
+                        <th>Artist Name</th>
+                        <th>Album</th>
+                        <th>Track</th>
+                        <th>Lyrics</th>
+                        <th>Modify</th>
+                        
+                      </tr>
+                    
+
+                    <?php 
+
+                if(isset($_POST['keyword'])){
+
+                    $keyword = "%".$_POST['keyword']."%";
+                    $rows=$obj->search($keyword);
+                    foreach($rows as $row){
+                     echo  "
+                     <div id='search_content'>
+                      <tbody id='current_content'  >
+                        <tr>
+                          <th class='art1' id='q' >".$row['artist']."</th>
+                          <th class='art2' id='q'>".$row['album']."</th>
+                          <th class='art3' id='q'>".$row['track_title']."</th>
+                          <th class='art4' id='q'>".$row['lyrics']."</th>
+                          <th>
+                         <form method='post'>
+                          <input class='id_hidden' type='hidden' name='id' value=".$row['id']." >
+                          <button type='submit'  class='btn btn-danger' name='delete'  >Delete</button>
+                          <button type='button' id='update' onclick='hide();resetForm();showDataInModal(event);setAtt();document.querySelector(".'".id_updated"'.").value=this.parentElement.querySelector(".'".id_hidden"'.").value;console.log(".'"tototot"'.");console.log(document.querySelector(".'".id_updated"'.").value)' class='btn btn-success'  name='update'>Update</button></th>
+                          </form>
+                        </tr>
+                      </tbody></div>"
+                      ;
+                      }
+                    }
+                    ?>
+                    
+                    
 
                     
                
@@ -285,8 +265,8 @@ let x = document.getElementById("my_form");
 <!-------->
 
 
-      <button type="button" class="btn btn-primary"  onclick="resetAtt();resetForm();" data-bs-toggle="modal" data-bs-target="#exampleModal" >Launch demo modal</button>
-  
+  <!----TOKEN--->
+  <button type="button" class="btn btn-primary"  onclick="resetAtt();resetForm();show();" data-bs-toggle="modal" data-bs-target="#exampleModal" >Launch demo modal</button>
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -326,21 +306,22 @@ let x = document.getElementById("my_form");
 
     <textarea type="text" class="form-control" id='exampleCheck2' name='lyrics' placeholder="Track Name"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary" name="data_submit">Submit</button>
-</form>
+  <!-- <button type="submit" class="btn btn-primary" name="data_submit">Submit</button> -->
+
 
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success"  id='add_new'>add</button>
-        <button type="submit" class="btn btn-primary" >Save changes</button>
+        <button type="button" class="btn btn-success"  id='add_new' onclick='dynamicForm();'>add</button>
+        <button type="submit" class="btn btn-primary" id='save'>Save changes</button>
+        <button type="submit" class="btn btn-danger " style='display:none' id='up'>Update</button>
       </div>
     </div>
   </div>
 </div>
 <!----------------------------------------------------------->
-
+</form>
 
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -355,27 +336,6 @@ let x = document.getElementById("my_form");
 if ( window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
 }
-
-function search(){
-        var q = document.getElementById('live_search').value;
-        if(q.length > 0){
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '../controller/livesearch.php?q='+q, true);
-            xhr.onload = function(){
-                if(this.status == 200){
-                    var data = JSON.parse(this.responseText);
-                    var result = document.getElementById('result');
-                    result.innerHTML = '';
-                    for(var i in data){
-                        result.innerHTML += '<p>'+data[i].name+'</p>';
-                    }
-                }
-            }
-            xhr.send();
-        }
-    }
-
-
 
 
 </script>
