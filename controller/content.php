@@ -139,11 +139,18 @@ $obj->getMusic();
         $album = $_POST['album'];
         $track = $_POST['track'];
         $lyrics = $_POST['lyrics'];
-            $obj -> setMusic($artist,$album,$track,$lyrics);
-        }
-        else{
-        $_SESSION['form'] = 'complet the form'; //modal form validation must be done 
+        $obj -> setMusic($artist,$album,$track,$lyrics);
     }
+    if(!empty($_POST['artist2']) && !empty($_POST['album2']) && !empty($_POST['track2']) && !empty($_POST['lyrics2'])){
+        $artist2 = $_POST['artist2'];
+        $album2 = $_POST['album2'];
+        $track2 = $_POST['track2'];
+        $lyrics2 = $_POST['lyrics2'];
+        $obj -> setMusic($artist2,$album2,$track2,$lyrics2);
+        }
+    else{
+        $_SESSION['form'] = 'complet the form'; //modal form validation must be done 
+        }
 
 
 

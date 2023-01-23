@@ -103,7 +103,7 @@ include '../controller/content.php';
             <div class="card bg-warning text-white h-100">
               <div class="card-body py-5"><strong><?php $obj->statAlbums(); ?></strong> ALBUMS</div>
               <div class="card-footer d-flex">
-                View Details
+               E-Lyrics
                 <span class="ms-auto">
                   <i class="bi bi-chevron-right"></i>
                 </span>
@@ -114,7 +114,7 @@ include '../controller/content.php';
             <div class="card bg-success text-white h-100">
               <div class="card-body py-5"><strong><?php $obj->statTracks();?></strong> TRACKS</div>
               <div class="card-footer d-flex">
-                View Details
+               E-Lyrics
                 <span class="ms-auto">
                   <i class="bi bi-chevron-right"></i>
                 </span>
@@ -126,7 +126,7 @@ include '../controller/content.php';
               <div class="card-body py-5"><strong><?php  $obj->statistics();?></strong> ARTISTS</div>
               <i class="fa-regular fa-album-collection-circle-plus"></i>
               <div class="card-footer d-flex">
-                View Details
+               E-Lyrics
                 <span class="ms-auto">
                   <i class="bi bi-chevron-right"></i>
                 </span>
@@ -231,7 +231,19 @@ include '../controller/content.php';
                          <form method='post'>
                           <input class='id_hidden' type='hidden' name='id' value=".$row['id']." >
                           <button type='submit'  class='btn btn-danger' name='delete'  >Delete</button>
-                          <button type='button' id='update' onclick='hide();resetForm();showDataInModal(event);setAtt();document.querySelector(".'".id_updated"'.").value=this.parentElement.querySelector(".'".id_hidden"'.").value;console.log(".'"tototot"'.");console.log(document.querySelector(".'".id_updated"'.").value)' class='btn btn-success'  name='update'>Update</button></th>
+                          <button 
+                            type='button' 
+                            id='update' 
+                            onclick=
+                               '
+                               hide();
+                               resetForm();
+                               showDataInModal(event);
+                               setAtt();
+                               document.querySelector(".'".id_updated"'.").value=this.parentElement.querySelector(".'".id_hidden"'.").value;
+                               ' 
+                               class='btn btn-success'  
+                               name='update'>Update</button></th>
                           </form>
                         </tr>
                       </tbody></div>"
@@ -282,59 +294,56 @@ let x = document.getElementById("my_form");
 
 
 
-      <form method='post' id="my_form" >
+      <form method='post' id="my_form"  data-parsley-validate >
 <div class="group">
   <div class="form-group">
     <input type="hidden" class="id_updated" name="u_id"/>
     <label for="exampleInputEmail1" >Artist Name</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name='artist'  placeholder="Artist">
+    <input type="text" class="form-control" id="exampleInputEmail1" name='artist'  placeholder="Artist" required>
   </div>
 
   <div class="form-group">
     <label for="exampleInputPassword1">Album</label>
-    <input type="text" class="form-control"  id='exampleInputPassword1' name='album' placeholder="Album">
+    <input type="text" class="form-control"  id='exampleInputPassword1' name='album' placeholder="Album" required>
   </div>
 
   <div class="form-group ">
   <label class="form-check-label" for="exampleCheck1">Track Name</label>
-  <input type="text" class="form-control"  id='exampleCheck1' name='track' placeholder="Track Name">
+  <input type="text" class="form-control"  id='exampleCheck1' name='track' placeholder="Track Name" required>
     
   </div>
 
   <div class="form-group ">
         <label class="form-check-label" for="exampleCheck1">lyrics</label>
 
-    <textarea type="text" class="form-control" id='exampleCheck2' name='lyrics' placeholder="Track Name"></textarea>
+    <textarea type="text" class="form-control" id='exampleCheck2' name='lyrics' placeholder="Track Name" required></textarea>
   </div>
-  <!-- <button type="submit" class="btn btn-primary" name="data_submit">Submit</button> -->
 
 </div>
-<!------------------>
 
 <div id="group2" style='display:none;'>
   <div class="form-group">
     <input type="hidden" class="id_updated" name="u_id"/>
     <label for="exampleInputEmail1" >Artist Name</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" name='artist'  placeholder="Artist">
+    <input type="text" class="form-control" id="exampleInputEmail1" name='artist2'  placeholder="Artist" >
   </div>
 
   <div class="form-group">
     <label for="exampleInputPassword1">Album</label>
-    <input type="text" class="form-control"  id='exampleInputPassword1' name='album' placeholder="Album">
+    <input type="text" class="form-control"  id='exampleInputPassword1' name='album2' placeholder="Album" >
   </div>
 
   <div class="form-group ">
   <label class="form-check-label" for="exampleCheck1">Track Name</label>
-  <input type="text" class="form-control"  id='exampleCheck1' name='track' placeholder="Track Name">
+  <input type="text" class="form-control"  id='exampleCheck1' name='track2' placeholder="Track Name" >
     
   </div>
 
-  <div class="form-group ">
+  <div class="form-group">
         <label class="form-check-label" for="exampleCheck1">lyrics</label>
 
-    <textarea type="text" class="form-control" id='exampleCheck2' name='lyrics' placeholder="Track Name"></textarea>
+    <textarea type="text" class="form-control" id='exampleCheck2' name='lyrics2' placeholder="Track Name" ></textarea>
   </div>
-  <!-- <button type="submit" class="btn btn-primary" name="data_submit">Submit</button> -->
 
 </div>
 
@@ -359,6 +368,7 @@ let x = document.getElementById("my_form");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" ></script>
 
 <script src='main.js'></script>
 

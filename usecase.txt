@@ -1,0 +1,8 @@
+-As a User i can connect to the dashboard 
+-As a User my login to the dashboard must be authenticated
+-As a User I can Add track lyrics
+-As a User I can Modify track lyrics
+-As a User I can Delete track lyrics
+-As a User I can Insert tracks through a dynamic form
+-As a  User I can see statistics of artist,admins and tracks
+-As a User I can search for a Track or Artist  
