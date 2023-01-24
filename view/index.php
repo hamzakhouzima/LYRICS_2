@@ -5,7 +5,13 @@ include '../controller/content.php';
     if(!isset($_SESSION['log'])){
         header("location:view_login.php");
     }
+    if(isset($_POST['logout'])){
+      session_destroy();
+      header("location:view_login.php");
 
+
+
+    }
 
 ?>
 <!DOCTYPE html>
@@ -41,27 +47,24 @@ include '../controller/content.php';
          <span class="navbar-toggler-icon"></span>
          </button> 
   
-       
         <div class="collapse navbar-collapse" id="topNavBar">
+      
           <form class="d-flex ms-auto my-3 my-lg-0" method='post'>
             <div class="input-group">
               <input class="form-control" type="search" placeholder="Search" aria-label="Search"  id='live_search' name="keyword"    />
                 
               <button class="btn btn-primary" type="submit" name='search' onsubmit='changeStyle()'>
+
+
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>          </button>
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>          </button>
             </div>
+            <button class='btn btn-danger' type='submit' name='logout' style='margin-left:5px ;'>logout</button> 
+
           </form>
           <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle ms-2"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+ 
                 <i class="bi bi-person-fill"></i>
               </a>
               <ul class="dropdown-menu dropdown-menu-end">
@@ -138,6 +141,7 @@ include '../controller/content.php';
 <button type="button" class="btn btn-success text-center"  onclick="resetAtt();resetForm();show();" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add New Track</button>
 
 
+        
 <div class="card-body" style="display:block;">
                 <div class="table-responsive">
               
@@ -186,9 +190,6 @@ include '../controller/content.php';
                 </div>
               </div>
 <!----------------------------------------------------------------------------------------->
-
-
-
 
        
         <div class="row">
